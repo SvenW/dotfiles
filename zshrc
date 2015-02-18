@@ -61,3 +61,11 @@ source '/Users/sven/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables bash completion for gcloud.
 source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
+
+# Bash completion for syb cli
+source '/Users/sven/projects/soundtrackyourbrand/syb/syb_zsh_completion'
+
+# Docker stuff
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/sven/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
