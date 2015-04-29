@@ -44,6 +44,11 @@ plugins=(git grunt)
 
 source $ZSH/oh-my-zsh.sh
 
+alias gg="git grep -n"
+rgrep() { grep -r -n "$1" . }
+alias gt="go test -v"
+gtr() { go test -v -run=$1 }
+
 # Customize to your needs...
 export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sven/Downloads/go_appengine/:$HOME/go/bin
 

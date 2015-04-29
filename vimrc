@@ -109,6 +109,9 @@ match ExtraWhitespace /\s\+\%#\@<!$/
 " Highlight UTF-8 chars that are out of range
 match Error /[\x7f-\xff]/
 
+" Remove search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+
 " Previous tab
 map <F1> gT
 " Next tab
