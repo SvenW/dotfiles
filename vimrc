@@ -1,32 +1,39 @@
-" Start required settings for vundle set nocompatible
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Bundle 'gmarik/vundle'
+" Make vim more useful
+set nocompatible
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+Plugin 'gmarik/vundle'
 " Repositories
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'scrooloose/syntastic'
-Bundle 'L9'
-Bundle 'ctrlp.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'scrooloose/nerdtree'
-Bundle 'skammer/vim-css-color'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'pangloss/vim-javascript'
-Bundle 'tpope/vim-surround'
-Bundle 'roktas/syntastic-more'
-
-" go dev env.
-Bundle 'fatih/vim-go'
-
+Plugin 'Lokaltog/vim-powerline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'L9'
+Plugin 'ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'skammer/vim-css-color'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-surround'
+Plugin 'roktas/syntastic-more'
+Plugin 'jpo/vim-railscasts-theme'
 " Renames current buffer and local file
-Bundle 'danro/rename.vim'
+Plugin 'danro/rename.vim'
+" go dev env.
+Plugin 'fatih/vim-go'
+
+" All of your Plugins must be added before the following line
+call vundle#end()
 filetype plugin indent on
 " End required settings for vundle
 
-" Make vim more useful
-set nocompatible
 " Use 256 colors in vim
 set t_Co=256
 colorscheme railscasts
@@ -100,8 +107,6 @@ set autoindent
 set smartindent
 " Do not wrap long lines
 set nowrap
-" Make tabes as wide as four spaces
-set tabstop=2 softtabstop=2 shiftwidth=2
 " Tab according to sourrounding code
 set smarttab
 " Highlight trailing white space
