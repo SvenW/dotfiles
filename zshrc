@@ -63,7 +63,7 @@ jgtr() {
 }
 
 # Customize to your needs...
-export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sven/Downloads/go_appengine/:$HOME/go/bin
+export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sven/go_appengine/:$HOME/go/bin
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
