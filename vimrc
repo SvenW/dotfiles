@@ -30,6 +30,8 @@ Plugin 'danro/rename.vim'
 " go dev env.
 Plugin 'fatih/vim-go'
 
+Plugin 'marijnh/tern_for_vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()
 filetype plugin indent on
@@ -214,3 +216,6 @@ let g:go_highlight_build_constraints = 1
 
 " =================== Vim-jsx ===================
 let g:jsx_ext_required = 0
+
+" =================== Vim-eslint ================
+let g:syntastic_javascript_checkers = ['eslint']
