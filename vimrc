@@ -18,6 +18,7 @@ Plugin 'L9'
 Plugin 'ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'skammer/vim-css-color'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'pangloss/vim-javascript'
@@ -166,6 +167,7 @@ let g:Powerline_symbols = 'fancy'
 " NERDTREE STUFF
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeShowHidden=1
 
 " Reselect visual block after indent/outdent
 vnoremap < <gv

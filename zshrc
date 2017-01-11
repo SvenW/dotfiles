@@ -1,11 +1,15 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
+#ZSH=$HOME/.oh-my-zsh
+#
+ZSH=$HOME/.zprezto
+
+source $ZSH/init.zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="cloud"
+#ZSH_THEME="cloud"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -42,7 +46,7 @@ ZSH_THEME="cloud"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git grunt)
 
-source $ZSH/oh-my-zsh.sh
+#source $ZSH/oh-my-zsh.sh
 
 alias gg="git grep -n"
 rgrep() { grep -r -n "$1" . }
@@ -62,8 +66,11 @@ jgtr() {
   fi
 }
 
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/sven/google-cloud-sdk/path.zsh.inc'
+
 # Customize to your needs...
-export PATH=/usr/local/bin:$PATH:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sven/go_appengine/:$HOME/go/bin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go_appengine:$HOME/go/bin:./node_modules/.bin/:$PATH
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -73,9 +80,6 @@ export GOPATH=$HOME/go
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-source '/Users/sven/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables bash completion for gcloud.
 source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
