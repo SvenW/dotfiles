@@ -91,3 +91,11 @@ source '/Users/sven/projects/soundtrackyourbrand/syb/syb_zsh_completion'
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/sven/.boot2docker/certs/boot2docker-vm
 export DOCKER_TLS_VERIFY=1
+
+#
+# kubectl
+#
+alias kc="kubectl"
+alias appcluster="gcloud --project syb-core-production-auth container clusters get-credentials appcluster"
+alias toolscluster="gcloud --project syb-core-production-auth container clusters get-credentials toolscluster"
+alias appcluster-staging="gcloud --project syb-core-staging-auth container clusters get-credentials appcluster"

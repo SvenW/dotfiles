@@ -30,6 +30,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'danro/rename.vim'
 " go dev env.
 Plugin 'fatih/vim-go'
+" Elixir dev env
+Plugin 'elixir-lang/vim-elixir'
 
 Plugin 'marijnh/tern_for_vim'
 
