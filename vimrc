@@ -26,6 +26,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'roktas/syntastic-more'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'mxw/vim-jsx'
+Plugin 'nixprime/cpsm'
 " Renames current buffer and local file
 Plugin 'danro/rename.vim'
 " go dev env.
@@ -209,12 +210,17 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 let g:ycm_collect_identifiers_from_tags_files=1
 
+" `=================== ctrlP =====================
+let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
+
 " ==================== Vim-go ====================
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
@@ -223,3 +229,8 @@ let g:jsx_ext_required = 0
 
 " =================== Vim-eslint ================
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_go_checkers = ['go']
+
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['go', 'javascript'],
+                            \ 'passive_filetypes': [] }

@@ -67,7 +67,14 @@ jgtr() {
 }
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/sven/google-cloud-sdk/path.zsh.inc'
+if [ -f /Users/sven/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/sven/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/sven/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
+fi
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go_appengine:$HOME/go/bin:./node_modules/.bin/:$PATH
@@ -87,11 +94,6 @@ source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
 # Bash completion for syb cli
 source '/Users/sven/projects/soundtrackyourbrand/syb/syb_zsh_completion'
 
-# Docker stuff
-export DOCKER_HOST=tcp://192.168.59.103:2376
-export DOCKER_CERT_PATH=/Users/sven/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-
 #
 # kubectl
 #
@@ -99,3 +101,8 @@ alias kc="kubectl"
 alias appcluster="gcloud --project syb-core-production-auth container clusters get-credentials appcluster"
 alias toolscluster="gcloud --project syb-core-production-auth container clusters get-credentials toolscluster"
 alias appcluster-staging="gcloud --project syb-core-staging-auth container clusters get-credentials appcluster"
+#
+# Jump
+# https://github.com/gsamokovarov/jump#installation
+#
+eval "$(jump shell zsh)"
