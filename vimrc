@@ -26,7 +26,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'roktas/syntastic-more'
 Plugin 'jpo/vim-railscasts-theme'
 Plugin 'mxw/vim-jsx'
-Plugin 'nixprime/cpsm'
 " Renames current buffer and local file
 Plugin 'danro/rename.vim'
 " go dev env.
@@ -35,6 +34,7 @@ Plugin 'fatih/vim-go'
 Plugin 'elixir-lang/vim-elixir'
 
 Plugin 'marijnh/tern_for_vim'
+Plugin 'wincent/command-t'
 
 " All of your Plugins must be added before the following line
 call vundle#end()
@@ -210,9 +210,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_key_list_select_completion = ['<TAB>', '<Down>', '<Enter>']
 let g:ycm_collect_identifiers_from_tags_files=1
 
-" `=================== ctrlP =====================
-let g:ctrlp_match_func = {'match': 'cpsm#CtrlPMatch'}
-
 " ==================== Vim-go ====================
 let g:go_fmt_command = "goimports"
 let g:go_fmt_autosave = 1
@@ -234,3 +231,9 @@ let g:syntastic_go_checkers = ['go']
 let g:syntastic_mode_map = { 'mode': 'active',
                             \ 'active_filetypes': ['go', 'javascript'],
                             \ 'passive_filetypes': [] }
+
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
