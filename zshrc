@@ -58,7 +58,7 @@ jgtr() {
   shift # shift all arguments so that $2 => $1 etc.
   TEST_FLAGS="$@" # Let TEST_FLAGS be rest of args
 
-  TEST_FILE=$(fgrep -slr "$TEST_REGEX(" {auth,radio,payment}-lib/test geocoding | head -1)
+  TEST_FILE=$(fgrep -slr "$TEST_REGEX(" {auth,radio,payment}/test geocoding | head -1)
   if [[ -n $TEST_FILE ]]; then
     go test -v "./$(dirname $TEST_FILE)/..." -test.run="$TEST_REGEX$" $TEST_FLAGS
   else
@@ -92,14 +92,16 @@ export PATH="/usr/local/heroku/bin:$PATH"
 source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
 
 # Bash completion for syb cli
-source '/Users/sven/projects/soundtrackyourbrand/syb/syb_zsh_completion'
+source '/Users/sven/go/src/github.com/soundtrackyourbrand/syb/syb_zsh_completion'
 
 #
 # kubectl
 #
 alias kc="kubectl"
 alias appcluster="gcloud --project syb-core-production-auth container clusters get-credentials appcluster"
+alias analysiscluster="gcloud --project syb-core-production-auth container clusters get-credentials analysiscluster"
 alias toolscluster="gcloud --project syb-core-production-auth container clusters get-credentials toolscluster"
+alias logcentercluster="gcloud --project syb-core-production-auth container clusters get-credentials logcenter"
 alias appcluster-staging="gcloud --project syb-core-staging-auth container clusters get-credentials appcluster"
 #
 # Jump
