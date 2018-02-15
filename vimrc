@@ -31,7 +31,8 @@ Plugin 'danro/rename.vim'
 " go dev env.
 Plugin 'fatih/vim-go'
 " Elixir dev env
-Plugin 'elixir-lang/vim-elixir'
+"Plugin 'elixir-lang/vim-elixir'
+Plugin 'elixir-editors/vim-elixir'
 
 Plugin 'marijnh/tern_for_vim'
 Plugin 'wincent/command-t'

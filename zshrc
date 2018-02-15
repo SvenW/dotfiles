@@ -77,7 +77,7 @@ if [ -f /Users/sven/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 # Customize to your needs...
-export PATH=/usr/local/go_appengine:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go_appengine:$HOME/go/bin:./node_modules/.bin/:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go/bin:./node_modules/.bin/:$PATH
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -108,3 +108,6 @@ alias appcluster-staging="gcloud --project syb-core-staging-auth container clust
 # https://github.com/gsamokovarov/jump#installation
 #
 eval "$(jump shell zsh)"
+
+# rbenv
+eval "$(rbenv init -)"
