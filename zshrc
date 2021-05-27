@@ -51,20 +51,6 @@ plugins=(git grunt)
 alias gg="git grep -n"
 rgrep() { grep -r -n "$1" . }
 alias gt="go test -v"
-gtr() { go test -v -run=$1 }
-
-jgtr() {
-  TEST_REGEX=$1
-  shift # shift all arguments so that $2 => $1 etc.
-  TEST_FLAGS="$@" # Let TEST_FLAGS be rest of args
-
-  TEST_FILE=$(fgrep -slr "$TEST_REGEX(" {auth,radio,payment}/test geocoding | head -1)
-  if [[ -n $TEST_FILE ]]; then
-    go test -v "./$(dirname $TEST_FILE)/..." -test.run="$TEST_REGEX$" $TEST_FLAGS
-  else
-    echo "Did not find: $TEST_REGEX"
-  fi
-}
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f /Users/sven/google-cloud-sdk/path.zsh.inc ]; then
@@ -77,7 +63,7 @@ if [ -f /Users/sven/google-cloud-sdk/completion.zsh.inc ]; then
 fi
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go/bin:./node_modules/.bin/:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go/bin:./node_modules/.bin/:/Users/sven/bin:/Users/sven/.asdf/installs/elixir/1.9/.mix/escripts:$PATH
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
@@ -85,24 +71,27 @@ export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export GOPATH=$HOME/go
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
 # The next line enables bash completion for gcloud.
 source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
 
 # Bash completion for syb cli
 source '/Users/sven/go/src/github.com/soundtrackyourbrand/syb/syb_zsh_completion'
 
-#
+alias kc=kubectl
 # kubectl
-#
-alias kc="kubectl"
-alias appcluster="gcloud --project syb-core-production-auth container clusters get-credentials appcluster"
-alias analysiscluster="gcloud --project syb-core-production-auth container clusters get-credentials analysiscluster"
-alias toolscluster="gcloud --project syb-core-production-auth container clusters get-credentials toolscluster"
-alias logcentercluster="gcloud --project syb-core-production-auth container clusters get-credentials logcenter"
-alias appcluster-staging="gcloud --project syb-core-staging-auth container clusters get-credentials appcluster"
+function c() {
+    kubectl config use-context $1
+}
+function _c() {
+    local cur kubectl_out
+    cur=${COMP_WORDS[COMP_CWORD]}
+    if kubectl_out=$(kubectl config get-contexts -o name 2>/dev/null); then
+        COMPREPLY=( $( compgen -W "${kubectl_out[*]}" -- "$cur" ) )
+    fi
+}
+complete -F _c c
+
+eval $(kubectl completion zsh)
 #
 # Jump
 # https://github.com/gsamokovarov/jump#installation
