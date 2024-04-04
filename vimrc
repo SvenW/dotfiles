@@ -44,7 +44,6 @@ filetype plugin indent on
 
 " Use 256 colors in vim
 set t_Co=256
-colorscheme gruvbox
 set background=dark
 " Tab completion
 set wildmode=list:longest,list:full

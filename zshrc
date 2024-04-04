@@ -50,32 +50,29 @@ plugins=(git grunt)
 
 alias gg="git grep -n"
 rgrep() { grep -r -n "$1" . }
-alias gt="go test -v"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f /Users/sven/google-cloud-sdk/path.zsh.inc ]; then
-  source '/Users/sven/google-cloud-sdk/path.zsh.inc'
+if [ -f /Users/svenwiden/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/svenwiden/google-cloud-sdk/path.zsh.inc'
 fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f /Users/sven/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
+if [ -f /Users/svenwiden/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/svenwiden/google-cloud-sdk/completion.zsh.inc'
 fi
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go/bin:./node_modules/.bin/:/Users/sven/bin:/Users/sven/.asdf/installs/elixir/1.9/.mix/escripts:$PATH
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/go/bin:./node_modules/.bin/:/Users/svenwiden/bin:/Users/svenwiden/.asdf/installs/elixir/1.9/.mix/escripts:$PATH
 
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 export GOPATH=$HOME/go
+export EDITOR=vim
 
 # The next line enables bash completion for gcloud.
-source '/Users/sven/google-cloud-sdk/completion.zsh.inc'
-
-# Bash completion for syb cli
-source '/Users/sven/go/src/github.com/soundtrackyourbrand/syb/syb_zsh_completion'
+source '/Users/svenwiden/google-cloud-sdk/completion.zsh.inc'
 
 alias kc=kubectl
 # kubectl
@@ -98,5 +95,42 @@ eval $(kubectl completion zsh)
 #
 eval "$(jump shell zsh)"
 
-# rbenv
-eval "$(rbenv init -)"
+eval "$(starship init zsh)"
+
+## Appends every command to the history file once it is executed
+#setopt inc_append_history
+## Reloads the history whenever you use it
+#setopt share_history
+#HISTFILE=~/.zsh_history
+
+export GITHUB_ACTOR=$(git config user.name)
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+# GCLOUD kubectl plugin
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+export KUBE_CONFIG_PATH=~/.kube/config
+#compdef gt
+###-begin-gt-completions-###
+#
+# yargs command completion script
+#
+# Installation: gt completion >> ~/.zshrc
+#    or gt completion >> ~/.zprofile on OSX.
+#
+_gt_yargs_completions()
+{
+  local reply
+  local si=$IFS
+  IFS=$'
+' reply=($(COMP_CWORD="$((CURRENT-1))" COMP_LINE="$BUFFER" COMP_POINT="$CURSOR" gt --get-yargs-completions "${words[@]}"))
+  IFS=$si
+  _describe 'values' reply
+}
+compdef _gt_yargs_completions gt
+###-end-gt-completions-###
